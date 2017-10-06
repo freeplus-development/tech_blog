@@ -103,6 +103,18 @@ http://efcl.info/2015/09/10/introduce-textlint/
 package.json
 ````
 
+#### 4.テスト失敗   
+テストに失敗すると、TravisCIのログにLintの違反内容が表示されます。  
+修正して再度Pushをお願いします。
+
+また、違反内容と共に
+````
+The command "npm run textlint" exited with 1.
+````
+というエラーメッセージが表示されますが、こちらは問題ありません。  
+Lintにすべて成功すれば表示されなくなります。  
+(すべて成功しているのに上記実行エラーが出る場合は橋本へご連絡ください)
+
 **※ FREEPLUS独自のルール**  
 FREEPLUSの入力方法のルールをlintルールにしてみたい。。。ですが、できればやります。
 

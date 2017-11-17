@@ -1,4 +1,6 @@
 # Timecrowdに固定時間を追加するWebアプリ作ってみた
+こんにちは、Webプログラマ3ヶ月目のShogoです。 
+
 Timecrowdに対し、下記のようなことが出来るAPIを週末にささっと作ってみました。
 - input
   - 日時
@@ -22,7 +24,7 @@ Timecrowdに一括して、タスクのタイムエントリーを登録した�
 
 ## 環境
 環境はRuby on Railsを使用しています。  
-Gemには、ラフノート株式会社様のomniauth-timecrowdを使用しています。
+Gemには、ラフノート株式会社様のOmniAuth-timecrowdを使用しています。
 
 -  Ruby 2.2.0p0 (2014-12-25 revision 49005) [x86_64-darwin16]
 -  Rails 4.2.1
@@ -119,8 +121,8 @@ gem 'omniauth-timecrowd', github: 'ruffnote/omniauth-timecrowd'
 
 # 全体の流れ
 Webアプリケーションの処理の流れはこのようになっています。  
-基本のベースは、omniauth-timecrowdのexampleを使用しました。
-1. omniauth-timecrowdでアクセストークンを発行できるようにする
+基本のベースは、OmniAuth-timecrowdのexampleを使用しました。
+1. OmniAuth-timecrowdでアクセストークンを発行できるようにする
 2. [GET]tasks でチーム全体のタスクを取得し、viewに表示する。
 3. ユーザはviewに表示されたタスクから、入力したいタスクを選ぶ。
 4. 期間と時間を入力させるため、viewを表示する。
@@ -129,7 +131,7 @@ Webアプリケーションの処理の流れはこのようになっていま�
 を使用して期間入力を行っていく。
 
 ## 1.アクセストークンの発行
-omniauth-timecrowdを使ってアクセストークンを発行する必要があります。  
+OmniAuth-timecrowdを使ってアクセストークンを発行する必要があります。  
 そのため、認証用のモジュールを作成します。
 initを実行し、成功したらtrueが返り、@access_tokenを使用することができます。
 ```ruby:auth_client.rb
@@ -205,7 +207,7 @@ end
 ## 3. ユーザはタスクを選択する
 controllerで表示するタスクが全て取得された後、
 viewにそれらを表示します。
-下記はomniauth-timecrowdのexampleほぼそのままですが、Taskを全部表示するようにしています。  
+下記はOmniAuth-timecrowdのexampleほぼそのままですが、Taskを全部表示するようにしています。  
 タイムエントリーを表示するために必要な情報は、クエリにして送信します。
 ```haml:index.html.haml
 - if @signed_in
